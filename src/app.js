@@ -7,6 +7,9 @@ import VueAxios from 'vue-axios'
 
 Vue.use(VueAxios, axios)
 
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue)
+
 import './assets/scss/index.scss'
 
 

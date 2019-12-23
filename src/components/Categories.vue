@@ -1,13 +1,17 @@
 <template>
   <div>
-    <ul>
-      <li
-        v-bind:v-if="categories.length"
-        v-for="category in categories"
-      >
-        {{category.name}}
-      </li>
-    </ul>
+    <b-card title="Categories">
+      <b-card-text>
+        <ul>
+          <li
+            v-bind:v-if="categories.length"
+            v-for="category in categories"
+          >
+            {{category.name}}
+          </li>
+        </ul>
+      </b-card-text>
+    </b-card>
   </div>
 </template>
 
