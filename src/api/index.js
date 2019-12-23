@@ -29,20 +29,30 @@ export default {
     axios
       .get(SETTINGS.API_BASE_PATH + 'posts/' + postId)
       .then(response => {
-        cb (response.data)
+        cb(response.data)
       })
       .catch(e => {
         cb(e)
       })
   },
 
-  getPostBySlug(postSlug, cb){
+  getPostBySlug(postSlug, cb) {
     axios
-      .get(SETTINGS.API_BASE_PATH + 'posts/?slug='+postSlug)
+      .get(SETTINGS.API_BASE_PATH + 'posts/?slug=' + postSlug)
       .then(response => {
         cb(response.data[0])
       })
-      .catch(e=>{
+      .catch(e => {
+        cb(e)
+      })
+  },
+  getMediaById(mediaId, cb) {
+    axios
+      .get(SETTINGS.API_BASE_PATH + 'media/' + mediaId)
+      .then(response => {
+        cb(response.data)
+      })
+      .catch(e => {
         cb(e)
       })
   }

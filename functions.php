@@ -10,3 +10,8 @@ add_action('wp_enqueue_scripts', 'assets');
 function assets() {
   wp_enqueue_script('main', get_stylesheet_directory_uri().'/dist/main.js', null, false, true);
 }
+
+add_action('init', 'vue_theme_support');
+function vue_theme_support() {
+  add_theme_support( 'post-thumbnails' );
+}
