@@ -2,8 +2,8 @@ import axios from 'axios'
 import SETTINGS from './../settings'
 
 
-export default {
-  getCategories(cb) {
+export default class API {
+  static getCategories(cb) {
     axios
       .get(SETTINGS.API_BASE_PATH + 'categories?hide_empty=true')
       .then(response => {
@@ -12,9 +12,9 @@ export default {
       .catch(e => {
         cb(e)
       })
-  },
+  }
 
-  getPosts(limit = 10, cb) {
+  static getPosts(limit = 10, cb) {
     axios
       .get(SETTINGS.API_BASE_PATH + 'posts?per_page=' + limit)
       .then(response => {
@@ -23,9 +23,9 @@ export default {
       .catch(e => {
         cb(e)
       })
-  },
+  }
 
-  getPostById(postId, cb) {
+  static getPostById(postId, cb) {
     axios
       .get(SETTINGS.API_BASE_PATH + 'posts/' + postId)
       .then(response => {
@@ -34,9 +34,9 @@ export default {
       .catch(e => {
         cb(e)
       })
-  },
+  }
 
-  getPostBySlug(postSlug, cb) {
+  static getPostBySlug(postSlug, cb) {
     axios
       .get(SETTINGS.API_BASE_PATH + 'posts/?slug=' + postSlug)
       .then(response => {
@@ -45,8 +45,9 @@ export default {
       .catch(e => {
         cb(e)
       })
-  },
-  getMediaById(mediaId, cb) {
+  }
+
+  static getMediaById(mediaId, cb) {
     axios
       .get(SETTINGS.API_BASE_PATH + 'media/' + mediaId)
       .then(response => {
@@ -56,4 +57,9 @@ export default {
         cb(e)
       })
   }
+
+  static getPostsWithMedia(limit=10, cb) {
+
+  }
+
 }
