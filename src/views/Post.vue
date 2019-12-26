@@ -2,8 +2,8 @@
   <div v-if="post">
     <b-card
       overlay
-      v-if="post.featured_media.media_details"
-      :img-src="post.featured_media.media_details.sizes.large.source_url"
+      v-if="post"
+      :img-src="postImageURL(post)"
       img-alt="Card Image"
       text-variant="white"
       :title="post.title.rendered"
@@ -19,12 +19,18 @@
 
 <script>
   import api from '../api/index'
+  import postHelpers from '../helpers/post'
 
   export default {
     name: "Post",
     data() {
       return {
         post: false
+      }
+    },
+    methods: {
+      postImageURL(post) {
+        return postHelpers.postImageUrl(post, 'large')
       }
     },
     mounted() {

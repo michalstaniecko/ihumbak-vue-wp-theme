@@ -5,7 +5,7 @@
 
       <div v-for="post in posts">
         <b-card
-          :img-src="postImage(post)"
+          :img-src="postImageURL(post)"
           img-alt=""
           img-left
           class="mb-3">
@@ -26,6 +26,7 @@
 
 <script>
   import API from '../api/index'
+  import postHelpers from '../helpers/post'
 
   export default {
     name: "Posts",
@@ -37,9 +38,8 @@
       }
     },
     methods: {
-      postImage(post) {
-        let img = post.featured_media.media_details ? post.featured_media.media_details.sizes.medium.source_url : this.imgPlaceholder
-        return img
+      postImageURL(post) {
+        return postHelpers.postImageUrl(post, 'medium')
       }
     },
     mounted() {
