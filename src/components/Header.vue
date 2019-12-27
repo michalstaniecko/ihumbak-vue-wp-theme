@@ -11,7 +11,7 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-item to="/">Home</b-nav-item>
             <b-nav-item to="/posts">Posts</b-nav-item>
-            <b-nav-item to="/page">Page</b-nav-item>
+            <b-nav-item to="/about">About</b-nav-item>
           </b-navbar-nav>
 
 

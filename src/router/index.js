@@ -15,11 +15,6 @@ const routes = [
     component: Home
   },
   {
-    path: '/page',
-    name: 'page',
-    component: Page
-  },
-  {
     path: '/post(s)?',
     name: 'posts',
     component: Posts
@@ -28,6 +23,11 @@ const routes = [
     path: '/post/:slug',
     name: 'post',
     component: Post
+  },
+  {
+    path: '/:page',
+    name: 'page',
+    component: Page
   },
   {
     path:'*',

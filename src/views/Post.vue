@@ -38,7 +38,7 @@
 
         this.post = this.$route.params.post
       } else {
-        api.getPostBySlug(this.$route.params.slug, (post) => {
+        api.getPostBySlug(this.$route.params.slug, 'posts', (post) => {
           this.post = post
           if (this.post.featured_media) {
             api.getMediaById(this.post.featured_media, (media) => {

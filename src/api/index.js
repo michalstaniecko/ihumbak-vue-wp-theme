@@ -36,9 +36,9 @@ export default class API {
       })
   }
 
-  static getPostBySlug(postSlug, cb) {
+  static getPostBySlug(postSlug, type, cb) {
     axios
-      .get(SETTINGS.API_BASE_PATH + 'posts/?slug=' + postSlug)
+      .get(SETTINGS.API_BASE_PATH + type + '/?slug=' + postSlug)
       .then(response => {
         cb(response.data[0])
       })

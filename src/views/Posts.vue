@@ -10,7 +10,7 @@
           img-left
           class="mb-3">
           <b-card-text>
-            <router-link :to="{name:'post', params: {slug:post.slug, post:post}}"><h3>{{post.title.rendered}}</h3>
+            <router-link :to="'/post/'+post.slug"><h3>{{post.title.rendered}}</h3>
             </router-link>
             <div v-html="post.excerpt.rendered"></div>
             <div class="text-right">
