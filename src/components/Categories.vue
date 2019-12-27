@@ -26,9 +26,10 @@
       }
     },
     mounted() {
-      api.getCategories((categories) => {
-        this.categories = categories
-      })
+      api.getCategories()
+        .then((categories) => {
+          this.categories = categories
+        })
     }
   }
 </script>

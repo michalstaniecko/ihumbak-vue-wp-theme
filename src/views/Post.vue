@@ -20,6 +20,7 @@
 <script>
   import api from '../api/index'
   import postHelpers from '../helpers/post'
+  import axios from 'axios'
 
   export default {
     name: "Post",
@@ -38,15 +39,60 @@
 
         this.post = this.$route.params.post
       } else {
-        api.getPostBySlug(this.$route.params.slug, 'posts', (post) => {
-          this.post = post
-          if (this.post.featured_media) {
-            api.getMediaById(this.post.featured_media, (media) => {
-              this.post.featured_media = media
-            })
-          }
-        })
+        api.getPostBySlug(this.$route.params.slug, 'posts')
+          .then((post) => {
+            return post
+          })
+          .then(post => {
+            if (typeof post.featured_media == 'number') {
+              new Promise((resolve, reject)=> {
+                resolve(api.getMediaById(post.featured_media)
+                  .then((media) => {
+                    post.featured_media = media
+                    return post
+                  }))
+              })
+              .then(response=>{
+                this.post=response
+              })
+            }
+
+          })
+
+
       }
+      /*
+            function loadPosts(src) {
+              return new Promise((resolve, reject) => {
+                axios(src)
+                  .then((response) => {
+                    resolve(response.data)
+                  })
+              })
+            }
+
+            function loadMedia(posts) {
+              return new Promise((resolve, reject) => {
+                resolve(
+                  posts.map(post => {
+                    if (post.featured_media) {
+                      api.getMediaById(post.featured_media, media => {
+                        post.featured_media = media
+                        return post
+                      })
+                    }
+                    return post
+                  })
+                )
+              })
+            }
+
+            let promise = loadMedia(loadPosts('http://vue.wp.testuj.website/wp-json/wp/v2/posts'));
+
+            promise
+              .then(response => {
+                console.log(response);
+              })*/
     }
   }
 </script>

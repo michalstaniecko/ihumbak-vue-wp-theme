@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="page">
     <h1>
       {{page.title.rendered}}
     </h1>
@@ -19,9 +19,10 @@
       }
     },
     mounted() {
-      API.getPostBySlug(this.$route.params.page, 'pages', (page) => {
-        this.page = page
-      })
+      API.getPostBySlug(this.$route.params.page, 'pages')
+        .then((page) => {
+          this.page = page
+        })
     }
   }
 </script>

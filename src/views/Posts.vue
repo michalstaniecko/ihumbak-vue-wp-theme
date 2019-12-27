@@ -34,7 +34,6 @@
       return {
         posts: [],
         counter: 0,
-        imgPlaceholder: 'http://placekitten.com/300/200'
       }
     },
     methods: {
@@ -43,7 +42,7 @@
       }
     },
     mounted() {
-      API.getPosts(10, (posts) => {
+      /*API.getPosts(10, (posts) => {
         this.posts = posts.map(post=> {
           if (post.featured_media) {
             API.getMediaById(post.featured_media, media=>{
@@ -52,7 +51,16 @@
           }
           return post
         })
-      })
+      })*/
+      API.getPostsWithMedia(10)
+        .then(response => {
+          this.posts= response
+        })
+      API.getPosts(10)
+        .then(posts => {
+
+
+        })
 
     }
   }
