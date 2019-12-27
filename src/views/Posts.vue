@@ -42,16 +42,7 @@
       }
     },
     mounted() {
-      /*API.getPosts(10, (posts) => {
-        this.posts = posts.map(post=> {
-          if (post.featured_media) {
-            API.getMediaById(post.featured_media, media=>{
-              post.featured_media = media
-            })
-          }
-          return post
-        })
-      })*/
+
       API.getPostsWithMedia(10)
         .then(response => {
           this.posts= response
