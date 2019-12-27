@@ -44,7 +44,7 @@
             return post
           })
           .then(post => {
-            if (typeof post.featured_media == 'number') {
+            if (post.featured_media !== 0) {
               new Promise((resolve, reject)=> {
                 resolve(api.getMediaById(post.featured_media)
                   .then((media) => {
@@ -55,6 +55,8 @@
               .then(response=>{
                 this.post=response
               })
+            } else {
+              this.post = post
             }
 
           })
